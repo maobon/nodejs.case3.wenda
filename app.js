@@ -4,8 +4,10 @@
  * 入口点
  */
 
-var express = require('express');
 var path = require('path');
+var express = require('express');
+
+var bodyParser = require('body-parser');
 
 // 引入自己的路由模块
 var indexRouter = require('./routes/index');
@@ -20,6 +22,10 @@ app.use('/public/', express.static(path.join(__dirname, './public/')));
 // 配置ejs模板引擎
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views/'));
+
+// 配置解析表单 POST 请求体数据中间件
+// 该中间件会为 req 请求对象提供一个 body 属性用来获取表单 POST 请求体数据
+app.use(bodyParser.urlencoded({extended: false}));
 
 // 设置路由
 app.use(indexRouter);
