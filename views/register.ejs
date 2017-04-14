@@ -14,17 +14,50 @@
 <div class="container">
     <form class="form-signin" id="form">
         <h2 class="form-signin-heading">Please sign up</h2>
+
         <input name="email" type="email" class="form-control" placeholder="邮箱" required autofocus>
         <input name="password" type="password" class="form-control" placeholder="密码" required>
         <input name="nickname" type="text" id="inputPassword" class="form-control" placeholder="昵称" required>
+
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me"> 记住我
             </label>
         </div>
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
     </form>
 </div>
-</body>
 
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function () {
+
+        $("#form").on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'post',
+                url: '/register',
+                data: $(this).serialize(),
+                dataType: 'json'
+
+            }).then(function (data) {
+                if (data.err_code === 0) {
+                    console.log('新用户注册成功');
+                } else if (data.err_code === 1001) {
+                    console.log(data.message);
+                }
+
+            }).catch(function (err) {
+                console.log('新用户注册请求失败');
+            })
+
+
+        })
+
+    });
+</script>
+
+</body>
 </html>

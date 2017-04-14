@@ -24,6 +24,37 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
 </div>
+
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function () {
+
+        $("#form").on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'post',
+                url: '/login',
+                data: $(this).serialize(),
+                dataType: 'json'
+
+            }).then(function (data) {
+                if (data.err_code === 0) {
+                    console.log('登录成功 跳转到首页')
+                } else if (data.err_code === 2001) {
+                    console.log(data.message);
+                }
+            }).catch(function (err) {
+                console.log('登录请求失败');
+            })
+
+
+        })
+
+
+    });
+</script>
+
 </body>
 
 </html>

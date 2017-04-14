@@ -6,13 +6,24 @@
 
 var User = require('../models/user');
 
+/**
+ * 展示登录页
+ * @param req
+ * @param res
+ */
 exports.showLogin = function (req, res) {
     res.render('login');
 }
 
+/**
+ * 执行登录
+ * @param req
+ * @param res
+ */
 exports.doLogin = function (req, res) {
 
     var body = req.body;
+    console.log(body);
 
     // model.findOne().then()
     // mongoose 查库的语法
@@ -49,13 +60,24 @@ exports.doLogin = function (req, res) {
 
 }
 
+/**
+ * 展示注册页
+ * @param req
+ * @param res
+ */
 exports.showRegister = function (req, res) {
     res.render('register');
 }
 
+/**
+ * 执行注册
+ * @param req
+ * @param res
+ */
 exports.doRegister = function (req, res) {
 
     var body = req.body;
+    console.log(body);
 
     User
         .findOne({email: body.email}) // 根据email查询用户的信息
