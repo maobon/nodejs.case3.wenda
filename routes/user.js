@@ -16,5 +16,7 @@ router
     .get('/register', userController.showRegister)  // 展示注册页面
     .post('/register', userController.doRegister)   // 执行注册操作
 
+    .get('/logout', userController.doLogout) // 执行登出操作
+
 
 module.exports = router;

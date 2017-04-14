@@ -7,6 +7,7 @@
 var path = require('path');
 var express = require('express');
 
+// express middleware 官方中间件
 var bodyParser = require('body-parser');
 var session = require('express-session');
 

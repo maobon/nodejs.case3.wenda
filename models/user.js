@@ -1,7 +1,9 @@
 /**
  * Created by xinbob on 4/12/17.
  *
- * 业务层 user 操作数据库
+ * 业务层 操作数据库
+ * 使用第三方mongoose处理 nodejs处理连接mongodb
+ * CRUD 增删改查操作
  */
 
 var mongoose = require('mongoose');

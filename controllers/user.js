@@ -23,7 +23,7 @@ exports.showLogin = function (req, res) {
 exports.doLogin = function (req, res) {
 
     var body = req.body;
-    console.log(body);
+    // console.log(body);
 
     // model.findOne().then()
     // mongoose 查库的语法
@@ -61,7 +61,6 @@ exports.doLogin = function (req, res) {
             }
         })
 
-
 }
 
 /**
@@ -81,7 +80,7 @@ exports.showRegister = function (req, res) {
 exports.doRegister = function (req, res) {
 
     var body = req.body;
-    console.log(body);
+    // console.log(body);
 
     User
         .findOne({email: body.email}) // 根据email查询用户的信息
@@ -116,4 +115,17 @@ exports.doRegister = function (req, res) {
             })
         })
 
+}
+
+/**
+ * 用户执行登出操作
+ * @param req
+ * @param res
+ */
+exports.doLogout = function (req, res) {
+    // req.session 服务端持有的 对应分配给客户端SESSID的用户信息
+    // 置空
+    req.session.isLogin = null;
+    // 服务端重定向到登录页
+    res.redirect('/login');
 }
