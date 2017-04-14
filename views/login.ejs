@@ -40,7 +40,8 @@
 
             }).then(function (data) {
                 if (data.err_code === 0) {
-                    console.log('登录成功 跳转到首页')
+                    console.log('登录成功 跳转到首页');
+                    window.location.href = '/';
                 } else if (data.err_code === 2001) {
                     console.log(data.message);
                 }

@@ -47,6 +47,10 @@ exports.doLogin = function (req, res) {
                     })
 
                 } else {
+
+                    // 修改服务器中 对应SESSION_ID的 isLogin属性
+                    req.session.isLogin = true;
+
                     // 1. 分配 session_id
                     // 2. 返回给客户端登录成功
                     res.json({

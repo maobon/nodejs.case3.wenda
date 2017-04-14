@@ -45,6 +45,7 @@
             }).then(function (data) {
                 if (data.err_code === 0) {
                     console.log('新用户注册成功');
+                    window.location.href = '/login';
                 } else if (data.err_code === 1001) {
                     console.log(data.message);
                 }
